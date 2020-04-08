@@ -1,11 +1,14 @@
 package com.example.jwtapptest.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "users")
 public class User extends BaseEntity {
@@ -26,5 +29,6 @@ public class User extends BaseEntity {
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JsonManagedReference
     private List<Role> roles;
 }
