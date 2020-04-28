@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "api/v1/auth/")
+@RequestMapping(value = "/api/v1/auth")
 public class AuthenticationRestController {
 
     private final AuthenticationManager authenticationManager;
@@ -33,16 +33,11 @@ public class AuthenticationRestController {
         this.userService = userService;
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public User register(@RequestBody RegisterDto registerDto) {
 
         try {
-            User user = new User();
-            user.setUsername(registerDto.getUsername());
-            user.setFirstName(registerDto.getFirstName());
-            user.setLastName(registerDto.getLastName());
-            user.setEmail(registerDto.getEmail());
-            user.setPassword(registerDto.getPassword());
+            User user = registerDto.toUser();
             userService.register(user);
             return user;
 
@@ -52,7 +47,7 @@ public class AuthenticationRestController {
         return null;
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
         try {
             String username = requestDto.getUsername();

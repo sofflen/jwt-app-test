@@ -2,10 +2,14 @@ package com.example.jwtapptest.dto;
 
 import com.example.jwtapptest.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
     private Long id;
     private String username;

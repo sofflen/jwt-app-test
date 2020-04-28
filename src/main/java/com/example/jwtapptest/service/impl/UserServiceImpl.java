@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-        Role roleUser = roleRepository.findByName("role_user");
+        Role roleUser = roleRepository.findByName("ROLE_user");
         List<Role> userRoles = new ArrayList<>();
         userRoles.add(roleUser);
 
@@ -53,7 +53,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).orElse(null);
+
+        if (user == null) {
+            log.warn("IN findByUsername - no user found by username {}", username);
+            return null;
+        }
+
         log.info("IN findByUsername - user {} found by username {}", user, username);
         return user;
     }

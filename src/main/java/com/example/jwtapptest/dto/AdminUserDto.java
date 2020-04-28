@@ -4,10 +4,14 @@ import com.example.jwtapptest.model.Role;
 import com.example.jwtapptest.model.Status;
 import com.example.jwtapptest.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminUserDto {

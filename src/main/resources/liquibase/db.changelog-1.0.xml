@@ -29,11 +29,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="updated" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
@@ -53,11 +53,11 @@
                 <constraints nullable="false" unique="true"/>
             </column>
 
-            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="updated" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
@@ -80,7 +80,7 @@
                                  baseColumnNames="user_id"
                                  constraintName="fk_user_roles_user"
                                  onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
+                                 onUpdate="CASCADE"
                                  referencedTableName="users"
                                  referencedColumnNames="id"/>
     </changeSet>
@@ -89,20 +89,20 @@
                                  baseColumnNames="role_id"
                                  constraintName="fk_user_roles_role"
                                  onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
+                                 onUpdate="CASCADE"
                                  referencedTableName="roles"
                                  referencedColumnNames="id"/>
     </changeSet>
 
     <changeSet id="1.5" author="Igor.Povrozniuk">
         <insert tableName="roles">
-            <column name="name" value="role_user"/>
+            <column name="name" value="ROLE_user"/>
         </insert>
     </changeSet>
 
     <changeSet id="1.6" author="Igor.Povrozniuk">
         <insert tableName="roles">
-            <column name="name" value="role_admin"/>
+            <column name="name" value="ROLE_admin"/>
         </insert>
     </changeSet>
 
