@@ -1,19 +1,25 @@
 package com.example.jwtapptest.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "users")
-public class User extends BaseEntity {
+
+public class User extends BaseEntity implements Serializable {
 
     @Column(name = "username")
     private String username;
